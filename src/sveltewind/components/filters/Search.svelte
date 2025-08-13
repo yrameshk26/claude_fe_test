@@ -1314,7 +1314,7 @@
 
 <form
 	class={twMerge(
-		'mb-2 flex max-h-52 w-full flex-col rounded-md px-3 py-2 text-sm ring-1 ring-gray-200 transition-all placeholder:text-xs lg:max-h-24',
+		'mb-2 flex max-h-52 w-full flex-col rounded-md px-3 py-2 text-sm bg-slate-800/50 border border-slate-700 transition-all placeholder:text-xs lg:max-h-24',
 		classContainer
 	)}
 	onsubmit={onSearch}

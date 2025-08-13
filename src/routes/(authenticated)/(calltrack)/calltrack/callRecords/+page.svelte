@@ -66,7 +66,7 @@
 			{#snippet leftChildren()}
 				{#if data.canViewAllCallRecords}
 					<div
-						class="flex w-fit min-w-60 items-center gap-1 overflow-x-auto overflow-y-hidden rounded-md bg-gray-100 p-1"
+						class="flex w-fit min-w-60 items-center gap-1 overflow-x-auto overflow-y-hidden rounded-md bg-slate-800 border border-slate-700 p-1"
 					>
 						<GhostButton
 							onclick={() => {
@@ -74,11 +74,11 @@
 								searchParams.set('createdBy', 'me')
 								goto(`?${searchParams.toString()}`, { replaceState: true })
 							}}
-							--color-ghostButton="var(--color-slate-500)"
+							--color-ghostButton="var(--color-slate-600)"
 							class={twMerge(
-								'py-1.5 text-xs text-nowrap',
+								'py-1.5 text-xs text-nowrap text-slate-300 hover:text-white',
 								page.url.searchParams.get('createdBy') === 'me' &&
-									'bg-slate-500 text-white hover:bg-slate-600 focus-visible:bg-slate-600'
+									'bg-slate-700 text-white hover:bg-slate-600 focus-visible:bg-slate-600'
 							)}
 						>
 							My Call Records
@@ -89,11 +89,11 @@
 								searchParams.set('createdBy', 'all')
 								goto(`?${searchParams.toString()}`, { replaceState: true })
 							}}
-							--color-ghostButton="var(--color-slate-500)"
+							--color-ghostButton="var(--color-slate-600)"
 							class={twMerge(
-								'py-1.5 text-xs text-nowrap',
+								'py-1.5 text-xs text-nowrap text-slate-300 hover:text-white',
 								page.url.searchParams.get('createdBy') === 'all' &&
-									'bg-slate-500 text-white hover:bg-slate-600 focus-visible:bg-slate-600'
+									'bg-slate-700 text-white hover:bg-slate-600 focus-visible:bg-slate-600'
 							)}
 						>
 							All Call Records
@@ -170,10 +170,10 @@
 			{#each data.callRecords ?? [] as callRecord (callRecord.id)}
 				<TableCellRow
 					class={twMerge(
-						callRecord.isNewCustomer && 'bg-orange-50 hover:bg-orange-100',
+						callRecord.isNewCustomer && 'bg-orange-900/20 hover:bg-orange-900/30',
 						// check if note was created within 5 days
 						new Date(callRecord.notes[0]?.updatedAt).getTime() >=
-							new Date().getTime() - 5 * 24 * 60 * 60 * 1000 && 'bg-yellow-100 hover:bg-yellow-200'
+							new Date().getTime() - 5 * 24 * 60 * 60 * 1000 && 'bg-yellow-900/20 hover:bg-yellow-900/30'
 					)}
 				>
 					{#if !printerState.isPrinting}

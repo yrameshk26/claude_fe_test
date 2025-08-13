@@ -17,8 +17,8 @@
 	const { children } = $props()
 
 	$effect(() => {
-		headerState.class = 'bg-gradient-to-r from-gray-800 to-neutral-800'
-		sidebarState.class = 'bg-gradient-to-b from-gray-800 to-neutral-800'
+		headerState.class = 'bg-slate-900 border-b border-slate-800'
+		sidebarState.class = 'bg-slate-900 border-r border-slate-800'
 		sidebarState.sidebarItems = [
 			{
 				id: '/reports/dashboard',

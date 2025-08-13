@@ -7,8 +7,8 @@
 	const { data, children } = $props()
 
 	$effect(() => {
-		headerState.class = 'bg-gradient-to-r from-red-800 to-rose-800'
-		sidebarState.class = 'bg-gradient-to-b from-red-800 to-rose-800'
+		headerState.class = 'bg-slate-900 border-b border-slate-800'
+		sidebarState.class = 'bg-slate-900 border-r border-slate-800'
 		sidebarState.sidebarItems = [
 			{
 				id: '/management/staffs',

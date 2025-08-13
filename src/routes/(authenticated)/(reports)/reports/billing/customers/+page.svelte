@@ -15,6 +15,8 @@
 	} from '$sveltewind/components/table'
 	import { Search } from '$sveltewind/components/filters'
 	import ErrorAlertWithReset from '$lib/components/ErrorAlertWithReset.svelte'
+	import Chart from '$lib/components/ui/chart.svelte'
+	import Card from '$lib/components/ui/card.svelte'
 
 	import { page } from '$app/state'
 	import { goto } from '$app/navigation'
@@ -73,6 +75,35 @@
 		{ label: 'Created By', value: 'createdBy' },
 		{ label: 'Updated By', value: 'updatedBy' }
 	]
+
+	// Prepare chart data
+	let chartData = $derived.by(() => {
+		if (!data.report || data.report.length === 0) return []
+		
+		return data.report.map(row => ({
+			period: row.period,
+			count: row.results.reduce((sum, r) => sum + (r.count || 0), 0)
+		}))
+	})
+
+	let pieData = $derived.by(() => {
+		if (!data.report || data.report.length === 0 || groupBy.length === 0) return []
+		
+		const aggregated: Record<string, number> = {}
+		data.report.forEach(row => {
+			row.results.forEach(result => {
+				const key = result[groupBy[0]] || 'Other'
+				aggregated[key] = (aggregated[key] || 0) + (result.count || 0)
+			})
+		})
+		
+		return Object.entries(aggregated)
+			.map(([name, value]) => ({ name, value }))
+			.sort((a, b) => b.value - a.value)
+			.slice(0, 10) // Top 10
+	})
+
+	let showCharts = $state(true)
 </script>
 
 <div class="flex flex-col items-end gap-4 lg:flex-row">
@@ -124,6 +155,92 @@
 {#if data.errors}
 	<ErrorAlertWithReset errors={data.errors} />
 {:else}
+	<!-- Charts Section -->
+	{#if showCharts && data.report && data.report.length > 0}
+		<div class="mb-6 grid gap-4 lg:grid-cols-2">
+			<Card variant="default" className="p-4">
+				<div class="mb-4 flex items-center justify-between">
+					<h3 class="text-lg font-semibold text-white">Customer Trends</h3>
+					<div class="flex gap-2">
+						<button
+							onclick={() => showCharts = !showCharts}
+							class="rounded-lg bg-slate-700 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-600"
+						>
+							{showCharts ? 'Hide' : 'Show'} Charts
+						</button>
+					</div>
+				</div>
+				<Chart 
+					data={chartData} 
+					type="area"
+					dataKey="count"
+					xAxisKey="period"
+					height={300}
+					colors={['#06b6d4']}
+				/>
+			</Card>
+
+			{#if groupBy.length > 0 && pieData.length > 0}
+				<Card variant="default" className="p-4">
+					<div class="mb-4">
+						<h3 class="text-lg font-semibold text-white">
+							Top 10 by {GROUP_BY_OPTIONS.find(o => o.value === groupBy[0])?.label}
+						</h3>
+					</div>
+					<Chart 
+						data={pieData} 
+						type="pie"
+						dataKey="value"
+						height={300}
+					/>
+				</Card>
+			{:else}
+				<Card variant="default" className="p-4">
+					<div class="mb-4">
+						<h3 class="text-lg font-semibold text-white">Daily Breakdown</h3>
+					</div>
+					<Chart 
+						data={chartData} 
+						type="bar"
+						dataKey="count"
+						xAxisKey="period"
+						height={300}
+						colors={['#8b5cf6']}
+					/>
+				</Card>
+			{/if}
+		</div>
+
+		<!-- Stats Cards -->
+		<div class="mb-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+			<Card variant="default" className="p-4">
+				<p class="text-sm text-slate-400">Total Customers</p>
+				<p class="text-2xl font-bold text-white">
+					{data.report.reduce((sum, row) => sum + row.results.reduce((s, r) => s + (r.count || 0), 0), 0).toLocaleString()}
+				</p>
+			</Card>
+			<Card variant="default" className="p-4">
+				<p class="text-sm text-slate-400">Average Daily</p>
+				<p class="text-2xl font-bold text-white">
+					{Math.round(data.report.reduce((sum, row) => sum + row.results.reduce((s, r) => s + (r.count || 0), 0), 0) / Math.max(1, data.report.length)).toLocaleString()}
+				</p>
+			</Card>
+			<Card variant="default" className="p-4">
+				<p class="text-sm text-slate-400">Peak Day</p>
+				<p class="text-2xl font-bold text-white">
+					{Math.max(...data.report.map(row => row.results.reduce((s, r) => s + (r.count || 0), 0))).toLocaleString()}
+				</p>
+			</Card>
+			<Card variant="default" className="p-4">
+				<p class="text-sm text-slate-400">Period</p>
+				<p class="text-lg font-bold text-white">
+					{data.report.length} days
+				</p>
+			</Card>
+		</div>
+	{/if}
+
+	<!-- Data Table -->
 	<Table classContainer="my-4 h-[calc(100%-248px)] lg:h-[calc(100%-98px)]">
 		{#snippet tableHead()}
 			<TableHeadRow>

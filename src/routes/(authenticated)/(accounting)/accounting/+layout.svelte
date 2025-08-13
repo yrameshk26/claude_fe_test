@@ -18,8 +18,8 @@
 	const { data, children } = $props()
 
 	$effect(() => {
-		headerState.class = 'bg-gradient-to-r from-orange-800 to-amber-800'
-		sidebarState.class = 'bg-gradient-to-b from-orange-800 to-amber-800'
+		headerState.class = 'bg-slate-900 border-b border-slate-800'
+		sidebarState.class = 'bg-slate-900 border-r border-slate-800'
 		sidebarState.sidebarItems = [
 			{
 				id: '/accounting/summary',
