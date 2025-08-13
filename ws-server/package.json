@@ -1,0 +1,13 @@
+{
+	"name": "ws-server",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "ws-server.js",
+	"scripts": {
+		"start": "node ws-server.js"
+	},
+	"dependencies": {
+		"ws": "8.13.0",
+		"redis": "4.6.7"
+	}
+}

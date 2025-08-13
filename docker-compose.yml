@@ -1,0 +1,33 @@
+services:
+  app:
+    image: node:23
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: 'bash'
+    tty: true
+    stdin_open: true
+    depends_on:
+      - ws
+
+  ws:
+    image: node:23
+    volumes:
+      - ./ws-server/:/app/
+    ports: [4000:4000]
+    env_file: .env
+    working_dir: /app
+    command: 'bash -c "npm i && npm start"'
+    depends_on:
+      - redis
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+  k6:
+    image: grafana/k6:latest
+    volumes:
+      - ./loadTest.js:/scripts/loadTest.js
+    entrypoint: ['k6', 'run', '/scripts/loadTest.js']
