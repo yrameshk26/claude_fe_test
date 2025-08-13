@@ -19,7 +19,7 @@
 			isVisibleCheck: () =>
 				page.data.session.isAdmin ||
 				page.data.session.permissions.find(({ app }: { app: string }) => app === 'BILLING'),
-			colors: 'from-blue-800 to-cyan-600 hover:from-blue-900 hover:to-cyan-700'
+			colors: 'bg-slate-800 hover:bg-slate-700 border border-slate-700'
 		},
 		accounting: {
 			name: 'Accounting',
@@ -28,7 +28,7 @@
 			isVisibleCheck: () =>
 				page.data.session.isAdmin ||
 				page.data.session.permissions.find(({ app }: { app: string }) => app === 'ACCOUNTING'),
-			colors: 'from-orange-800 to-amber-600 hover:from-orange-900 hover:to-amber-700'
+			colors: 'bg-slate-800 hover:bg-slate-700 border border-slate-700'
 		},
 
 		wholesale: {
@@ -38,7 +38,7 @@
 			isVisibleCheck: () =>
 				page.data.session.isAdmin ||
 				page.data.session.permissions.find(({ app }: { app: string }) => app === 'WHOLESALE'),
-			colors: 'from-green-800 to-teal-600 hover:from-green-900 hover:to-teal-700'
+			colors: 'bg-slate-800 hover:bg-slate-700 border border-slate-700'
 		},
 		calltrack: {
 			name: 'Call Track',
@@ -47,7 +47,7 @@
 			isVisibleCheck: () =>
 				page.data.session.isAdmin ||
 				page.data.session.permissions.find(({ app }: { app: string }) => app === 'CALLTRACK'),
-			colors: 'from-indigo-800 to-violet-600 hover:from-indigo-900 hover:to-violet-700'
+			colors: 'bg-slate-800 hover:bg-slate-700 border border-slate-700'
 		},
 		management: {
 			name: 'Management',
@@ -56,7 +56,7 @@
 			isVisibleCheck: () =>
 				page.data.session.isAdmin ||
 				page.data.session.permissions.find(({ app }: { app: string }) => app === 'MANAGEMENT'),
-			colors: 'from-red-800 to-rose-600 hover:from-red-900 hover:to-rose-700'
+			colors: 'bg-slate-800 hover:bg-slate-700 border border-slate-700'
 		},
 		reports: {
 			name: 'Reports',
@@ -67,7 +67,7 @@
 				page.data.session.permissions.find(
 					({ permissionType }: { permissionType: string }) => permissionType === 'VIEW_REPORTS'
 				),
-			colors: 'from-gray-800 to-neutral-600 hover:from-gray-900 hover:to-neutral-700'
+			colors: 'bg-slate-800 hover:bg-slate-700 border border-slate-700'
 		}
 	}
 
@@ -88,7 +88,7 @@
 				<GhostButton
 					href={app.href}
 					class={twMerge(
-						'w-full max-w-xs justify-start bg-blue-50 bg-gradient-to-r px-8 py-4 text-white uppercase',
+						'w-full max-w-xs justify-start px-8 py-4 text-white uppercase',
 						app.colors
 					)}
 				>

@@ -8,11 +8,11 @@
 		{
 			variants: {
 				variant: {
-					default: 'bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl',
-					solid: 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg rounded-2xl',
-					glass: 'bg-white/5 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl hover:bg-white/10',
-					gradient: 'bg-gradient-to-br from-primary/20 via-accent/10 to-transparent backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl',
-					glow: 'bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-primary/30 shadow-2xl shadow-primary/20 rounded-2xl'
+					default: 'bg-slate-800 border border-slate-700 shadow-lg rounded-xl',
+					solid: 'bg-slate-800 border border-slate-700 shadow-lg rounded-xl',
+					glass: 'bg-slate-800/95 border border-slate-600 shadow-lg rounded-xl hover:bg-slate-700/95',
+					gradient: 'bg-slate-800 border border-purple-700 shadow-lg rounded-xl',
+					glow: 'bg-slate-800 border-2 border-slate-600 shadow-lg rounded-xl'
 				},
 				padding: {
 					none: '',

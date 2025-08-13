@@ -177,8 +177,8 @@
 		tabindex="0"
 		role="button"
 		class={twMerge(
-			'hover:bg-textInput/10 focus:ring-textInput relative flex w-full cursor-pointer flex-col justify-between rounded-md px-3 py-2 ring-1 ring-gray-300 focus:ring-2 focus:outline-none',
-			isDisabled && 'cursor-not-allowed',
+			'relative flex w-full cursor-pointer flex-col justify-between rounded-lg px-4 py-3 bg-slate-800/50 border border-slate-700 hover:bg-slate-800 focus:border-slate-500 focus:outline-none transition-all',
+			isDisabled && 'cursor-not-allowed opacity-60',
 			classForm
 		)}
 		onmouseenter={() => (showCopyButton = true)}
@@ -186,8 +186,8 @@
 	>
 		<span
 			class={twMerge(
-				'text-xs font-bold text-gray-900',
-				isRequired && 'after:ml-1 after:text-red-500  after:content-["*"]',
+				'text-xs font-semibold text-slate-400 uppercase tracking-wider',
+				isRequired && 'after:ml-1 after:text-red-400 after:content-["*"]',
 				classLabel,
 				!label && !labelSnippet && 'sr-only'
 			)}
@@ -199,7 +199,7 @@
 			{/if}
 		</span>
 		<div class="flex items-center gap-1 text-sm">
-			<div id={containerID} class={twMerge('w-full', classValue)}>
+			<div id={containerID} class={twMerge('w-full text-white', classValue)}>
 				{#if valueSnippet}
 					{@render valueSnippet()}
 				{:else}

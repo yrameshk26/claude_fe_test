@@ -195,8 +195,8 @@
 	>
 		<span
 			class={twMerge(
-				'text-xs font-bold text-gray-900',
-				isRequired && 'after:ml-1 after:text-red-500  after:content-["*"]',
+				'text-xs font-bold text-slate-400',
+				isRequired && 'after:ml-1 after:text-red-400  after:content-["*"]',
 				classLabel,
 				!label && !labelSnippet && 'sr-only'
 			)}
@@ -207,14 +207,14 @@
 				{label || name}
 			{/if}
 		</span>
-		<div class="flex items-center gap-1 text-sm">
+		<div class="flex items-center gap-1 text-sm text-white">
 			<div id={containerID} class={twMerge('h-fit w-full', classValue)}>
 				{#if valueSnippet}
 					{@render valueSnippet()}
 				{:else if value}
 					{value}
 				{:else}
-					<span class="text-xs text-gray-300"> - </span>
+					<span class="text-xs text-slate-500"> - </span>
 				{/if}
 			</div>
 			{#if value && showCopyButton && !hideCopyButton}

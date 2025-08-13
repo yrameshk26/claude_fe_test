@@ -17,13 +17,13 @@
 </script>
 
 <div class={cn(
-	"relative w-full overflow-hidden rounded-xl bg-gradient-to-br from-white/5 via-transparent to-white/5 backdrop-blur-sm border border-white/10",
+	"relative w-full overflow-hidden rounded-xl bg-slate-800 border border-slate-700 shadow-lg",
 	containerClassName
 )}>
 	<div class="w-full overflow-auto">
 		<table
 			class={cn(
-				"w-full caption-bottom text-sm",
+				"w-full caption-bottom text-sm text-gray-100",
 				className
 			)}
 			{...restProps}

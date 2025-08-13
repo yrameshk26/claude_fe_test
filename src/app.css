@@ -14,6 +14,10 @@
 }
 
 @layer base {
+	body {
+		@apply bg-slate-950;
+	}
+	
 	:root {
 		/* Modern Purple-Blue Gradient Theme */
 		--background: 0 0% 100%;

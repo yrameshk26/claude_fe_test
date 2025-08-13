@@ -16,7 +16,7 @@
 
 <tr
 	class={cn(
-		"border-b border-white/10 transition-all hover:bg-white/5",
+		"border-b border-slate-700 transition-all hover:bg-slate-800/50",
 		className
 	)}
 	{...restProps}

@@ -16,7 +16,7 @@
 
 <thead
 	class={cn(
-		"[&_tr]:border-b border-white/10",
+		"[&_tr]:border-b border-slate-700",
 		className
 	)}
 	{...restProps}

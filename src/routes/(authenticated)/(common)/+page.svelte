@@ -33,17 +33,17 @@
 
 	$effect(() => {
 		headerState.title = 'Dashboard'
-		headerState.class = 'bg-gradient-to-r from-purple-900 via-purple-800 to-cyan-800 shadow-xl border-b border-white/10'
+		headerState.class = 'bg-slate-900 border-b border-slate-800'
 	})
 </script>
 
-<Sidebar class="w-64 bg-gradient-to-b from-purple-900/95 via-purple-800/95 to-cyan-900/95 backdrop-blur-xl text-white border-r border-white/10">
+<Sidebar class="w-64 bg-slate-900 text-white border-r border-slate-800">
 	<div class="flex h-full flex-col">
 		<div class="flex w-full flex-col items-center justify-between py-4">
-			<div class="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl shadow-glow flex items-center justify-center mb-4">
-				<span class="text-3xl font-bold text-white">T</span>
+			<div class="w-20 h-20 bg-slate-900/50 rounded-xl border border-slate-700 flex items-center justify-center mb-4">
+				<span class="text-3xl font-bold text-slate-400">T</span>
 			</div>
-			<h1 class="w-full text-center text-xl font-display font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+			<h1 class="w-full text-center text-xl font-semibold text-slate-200">
 				TVUPWEB
 			</h1>
 		</div>
@@ -51,7 +51,7 @@
 		<div class="flex w-full flex-1 flex-col items-center justify-between py-4">
 			<p></p>
 			<div class="flex flex-col gap-2 text-center">
-				<Badge variant="glow" className="mx-auto">
+				<Badge variant="default" className="mx-auto">
 					v{import.meta.env.BUILD_VERSION}
 				</Badge>
 				<p class="text-xs text-gray-400">
@@ -89,72 +89,69 @@
 		>
 	</div>
 {:else}
-	<div class="relative min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/20 to-cyan-900/20">
-		<!-- Decorative gradient orbs -->
-		<div class="absolute top-20 left-20 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl opacity-10 animate-glow"></div>
-		<div class="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl opacity-10 animate-glow" style="animation-delay: 2s"></div>
+	<div class="bg-slate-950">
 		
-		<div class="relative p-8 space-y-8">
+		<div class="relative p-6 space-y-6 overflow-y-auto" style="height: calc(100vh - 64px);">
 			<!-- Welcome Section -->
-			<div class="mb-8 animate-fade-in">
-				<h1 class="text-4xl font-display font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent mb-2">
+			<div class="mb-6 animate-fade-in">
+				<h1 class="text-3xl font-semibold text-white mb-2">
 					Welcome back{data.myProfile?.fullName ? `, ${data.myProfile.fullName}` : ''}!
 				</h1>
-				<p class="text-gray-400">Manage your account settings and monitor your active sessions</p>
+				<p class="text-slate-400">Manage your account settings and monitor your active sessions</p>
 			</div>
 
 			<!-- Stats Grid -->
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-				<Card variant="gradient" className="animate-fade-in" hasShimmer>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+				<Card variant="default" className="animate-fade-in">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-400">Active Sessions</p>
+							<p class="text-sm text-slate-400">Active Sessions</p>
 							<p class="text-3xl font-bold text-white mt-1">{data.myProfile?.sessions?.length || 0}</p>
 						</div>
-						<div class="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center">
-							<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
 							</svg>
 						</div>
 					</div>
 				</Card>
 
-				<Card variant="glow" className="animate-fade-in" style="animation-delay: 0.1s" hasShimmer>
+				<Card variant="default" className="animate-fade-in" style="animation-delay: 0.1s">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-400">Profile Status</p>
+							<p class="text-sm text-slate-400">Profile Status</p>
 							<p class="text-3xl font-bold text-white mt-1">Active</p>
 						</div>
-						<div class="w-12 h-12 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center">
-							<svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 							</svg>
 						</div>
 					</div>
 				</Card>
 
-				<Card variant="glass" className="animate-fade-in" style="animation-delay: 0.2s" hasShimmer>
+				<Card variant="default" className="animate-fade-in" style="animation-delay: 0.2s">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-400">Phone Numbers</p>
+							<p class="text-sm text-slate-400">Phone Numbers</p>
 							<p class="text-3xl font-bold text-white mt-1">{data.myProfile?.phoneNumbers?.length || 0}</p>
 						</div>
-						<div class="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center">
-							<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
 							</svg>
 						</div>
 					</div>
 				</Card>
 
-				<Card variant="default" className="animate-fade-in" style="animation-delay: 0.3s" hasShimmer>
+				<Card variant="default" className="animate-fade-in" style="animation-delay: 0.3s">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-400">Security Level</p>
+							<p class="text-sm text-slate-400">Security Level</p>
 							<p class="text-3xl font-bold text-white mt-1">High</p>
 						</div>
-						<div class="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center">
-							<svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<div class="w-12 h-12 bg-amber-900/50 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
 							</svg>
 						</div>
@@ -163,17 +160,17 @@
 			</div>
 
 			<!-- Active Sessions Card -->
-			<Card variant="glass" hasShimmer className="animate-fade-in" style="animation-delay: 0.4s">
-				<div class="flex items-center justify-between mb-6">
-					<h2 class="text-2xl font-display font-semibold text-white flex items-center gap-3">
-						<div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-							<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<Card variant="default" className="animate-fade-in" style="animation-delay: 0.4s">
+				<div class="flex items-center justify-between mb-4">
+					<h2 class="text-xl font-semibold text-white flex items-center gap-3">
+						<div class="w-9 h-9 bg-slate-700 rounded-lg flex items-center justify-center">
+							<svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
 							</svg>
 						</div>
 						Active Sessions
 					</h2>
-					<Badge variant="info">{data.myProfile.sessions.length} Active</Badge>
+					<Badge variant="default">{data.myProfile.sessions.length} Active</Badge>
 				</div>
 				<Table containerClassName="mb-6">
 					<TableHeader>
@@ -262,13 +259,12 @@
 					successMessage="Successfully deleted all sessions."
 				>
 					{#snippet trigger({ onclick })}
-						<SolidButton
+						<button
 							{onclick}
-							class="w-fit py-2 text-xs"
-							--color-solidButton="var(--color-red-600)"
+							class="w-fit px-3 py-2 text-xs font-medium text-red-400 bg-red-950/30 border border-red-900/50 rounded-lg hover:bg-red-950/50 transition-all"
 						>
-							<TrashIcon class="mr-1 size-4" />
-							Delete all sessions</SolidButton
+							<TrashIcon class="mr-1 size-4 inline" />
+							Delete all sessions</button
 						>
 					{/snippet}
 					{#snippet fields()}
@@ -281,11 +277,11 @@
 			</Card>
 
 			<!-- My Profile Section -->
-			<Card variant="glass" hasShimmer className="animate-fade-in" style="animation-delay: 0.5s">
-				<div class="flex items-center justify-between mb-6">
-					<h2 class="text-2xl font-display font-semibold text-white flex items-center gap-3">
-						<div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-							<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<Card variant="default" className="animate-fade-in" style="animation-delay: 0.5s">
+				<div class="flex items-center justify-between mb-4">
+					<h2 class="text-xl font-semibold text-white flex items-center gap-3">
+						<div class="w-9 h-9 bg-slate-700 rounded-lg flex items-center justify-center">
+							<svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
 							</svg>
 						</div>
@@ -326,9 +322,9 @@
 						>
 							{#snippet trigger({ onclick })}
 								<div>
-									<SolidButton {onclick} class="text-xs" --color-solidButton="var(--color-red-600)">
-										<RefreshIcon class="mr-1 size-4" /> Reset my password
-									</SolidButton>
+									<button {onclick} class="px-4 py-2 text-xs font-medium text-red-400 bg-red-950/30 border border-red-900/50 rounded-lg hover:bg-red-950/50 transition-all">
+										<RefreshIcon class="mr-1 size-4 inline" /> Reset my password
+									</button>
 								</div>
 							{/snippet}
 
@@ -364,13 +360,12 @@
 									<p class="text-sm">Are you sure you want to remove your profile image?</p>
 								{/snippet}
 								{#snippet trigger({ onclick })}
-									<GhostButton
+									<button
 										{onclick}
-										class="px-2 py-2 text-xs"
-										--color-ghostButton="var(--color-red-600)"
+										class="px-2 py-1 text-xs font-medium text-red-400 border border-red-900/50 rounded hover:bg-red-950/30 transition-all"
 									>
-										<TrashIcon class="mr-1 size-4" />Remove
-									</GhostButton>
+										<TrashIcon class="mr-1 size-3 inline" />Remove
+									</button>
 								{/snippet}
 							</ConfirmForm>
 						{/if}
@@ -379,17 +374,17 @@
 			</Card>
 
 			<!-- My Phone Numbers Section -->
-			<Card variant="glass" hasShimmer className="@container animate-fade-in" style="animation-delay: 0.6s">
-				<div class="flex items-center justify-between mb-6">
-					<h2 class="text-2xl font-display font-semibold text-white flex items-center gap-3">
-						<div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-							<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<Card variant="default" className="@container animate-fade-in" style="animation-delay: 0.6s">
+				<div class="flex items-center justify-between mb-4">
+					<h2 class="text-xl font-semibold text-white flex items-center gap-3">
+						<div class="w-9 h-9 bg-slate-700 rounded-lg flex items-center justify-center">
+							<svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
 							</svg>
 						</div>
 						My Phone Numbers
 					</h2>
-					<Badge variant="info">{data.myProfile.phoneNumbers?.length || 0} Numbers</Badge>
+					<Badge variant="default">{data.myProfile.phoneNumbers?.length || 0} Numbers</Badge>
 				</div>
 				<div class="p-4">
 					<ViewPhoneNumbers
@@ -401,11 +396,11 @@
 			</Card>
 
 			<!-- Audit Trail Section -->
-			<Card variant="glass" hasShimmer className="animate-fade-in" style="animation-delay: 0.7s">
-				<div class="flex items-center justify-between mb-6">
-					<h2 class="text-2xl font-display font-semibold text-white flex items-center gap-3">
-						<div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-							<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<Card variant="default" className="animate-fade-in" style="animation-delay: 0.7s">
+				<div class="flex items-center justify-between mb-4">
+					<h2 class="text-xl font-semibold text-white flex items-center gap-3">
+						<div class="w-9 h-9 bg-slate-700 rounded-lg flex items-center justify-center">
+							<svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 							</svg>
 						</div>

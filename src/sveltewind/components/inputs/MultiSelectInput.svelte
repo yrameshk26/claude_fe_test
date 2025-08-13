@@ -398,21 +398,21 @@
 <div
 	use:clickOutside={close}
 	class={twMerge(
-		'focus-within:ring-textInput relative flex flex-col rounded-md py-1 text-sm ring-1 ring-gray-300 transition-all placeholder:text-xs focus-within:border-transparent focus-within:ring-2 focus-within:outline-2 focus-within:outline-transparent',
-		error && 'ring-red-500',
+		'relative flex flex-col rounded-lg px-4 py-3 text-sm bg-slate-800/50 border border-slate-700 transition-all placeholder:text-slate-500 focus-within:border-slate-500 focus-within:bg-slate-800',
+		error && 'border-red-500/50 bg-red-950/20',
 		(isDisabled || isReadOnly) &&
-			'cursor-not-allowed bg-gray-200/50 text-gray-500 hover:bg-gray-200/50 active:translate-y-0',
+			'cursor-not-allowed bg-slate-900/50 text-slate-500 opacity-60',
 		classContainer
 	)}
 >
 	<label
 		for={id}
 		class={twMerge(
-			'px-3 text-xs font-bold text-gray-900 ',
-			isRequired && 'after:ml-1 after:text-red-500 after:content-["*"]',
+			'text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1',
+			isRequired && 'after:ml-1 after:text-red-400 after:content-["*"]',
 			classLabel,
 			!label && !labelSnippet && 'sr-only',
-			(isDisabled || isReadOnly) && 'cursor-not-allowed rounded-md bg-gray-100'
+			(isDisabled || isReadOnly) && 'cursor-not-allowed opacity-60'
 		)}
 	>
 		{#if labelSnippet}
@@ -421,7 +421,7 @@
 			{label || name}
 		{/if}
 	</label>
-	<div class={twMerge('flex h-full items-center justify-between px-3', classInputGroup)}>
+	<div class={twMerge('flex h-full items-center justify-between', classInputGroup)}>
 		{#if leftChildren}
 			{@render leftChildren({ close })}
 		{/if}
@@ -442,7 +442,7 @@
 			type="text"
 			autocomplete="off"
 			class={twMerge(
-				'flex-1 appearance-none border-0 placeholder:text-xs focus:outline-0 disabled:cursor-not-allowed',
+				'flex-1 appearance-none border-0 bg-transparent text-white placeholder:text-slate-500 placeholder:text-sm focus:outline-0 disabled:cursor-not-allowed',
 				classInput
 			)}
 			role="combobox"

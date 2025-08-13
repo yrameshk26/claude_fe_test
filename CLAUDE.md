@@ -42,6 +42,19 @@ The app uses nested layouts with authentication boundaries:
 
 ### UI Component Systems
 
+#### UI Design System
+The project uses a modern dark theme with the following design principles:
+- **Color Palette**: Slate colors (slate-800/50, slate-900, slate-950) for backgrounds
+- **Typography**: White primary text, slate-400 for labels and secondary text
+- **Borders**: Slate-700 borders that lighten to slate-500 on focus/hover
+- **No Gradients**: Solid colors only for better readability and modern aesthetic
+- **Input Styling**: All input components use consistent dark theme with:
+  - Dark slate backgrounds (slate-800/50)
+  - White text color for values
+  - Slate-400 uppercase labels
+  - Consistent focus states with slate-500 borders
+  - Red accent colors for errors (red-500/50 borders, red-950/20 backgrounds)
+
 #### shadcn/ui Components (New - Preferred)
 The `/src/lib/components/ui/` directory contains modern UI components adapted from shadcn/ui:
 - **Components**: Button, Input, Label, Card (with subcomponents), Alert
@@ -55,9 +68,11 @@ The `/src/lib/components/ui/` directory contains modern UI components adapted fr
 
 #### Legacy sveltewind Components
 The `/src/sveltewind/` directory contains the original custom UI component library:
-- Being progressively migrated to shadcn/ui
-- Use for existing features that haven't been migrated yet
-- Follow existing patterns when modifying these components
+- Recently modernized with consistent dark theme styling
+- Input components (TextInput, SelectInput, TextareaInput, etc.) updated with slate color scheme
+- Form components (TextEditForm, SelectEditForm) updated for consistency
+- Use for existing features that haven't been migrated to shadcn/ui yet
+- Follow the established dark theme patterns when modifying these components
 
 ### Server-Side Logic
 - Place server logic in `+page.server.ts` or `+layout.server.ts` files
