@@ -4,24 +4,28 @@
 	import { cn } from '$lib/cn'
 
 	const buttonVariants = cva(
-		'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
+		'relative inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 aria-invalid:ring-destructive/20',
 		{
 			variants: {
 				variant: {
-					default: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+					default: 'bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-100 focus-visible:ring-primary',
+					gradient: 'bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-100 focus-visible:ring-purple-500',
+					glow: 'bg-primary text-primary-foreground rounded-xl shadow-glow hover:shadow-glow-lg hover:scale-105 active:scale-100 focus-visible:ring-primary animate-glow',
 					destructive:
-						'bg-destructive text-destructive-foreground shadow hover:bg-destructive/90 focus-visible:ring-destructive/20',
+						'bg-gradient-to-r from-destructive to-pink-600 text-destructive-foreground rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-100 focus-visible:ring-destructive',
 					outline:
-						'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
-					secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
-					ghost: 'hover:bg-accent hover:text-accent-foreground',
-					link: 'text-primary underline-offset-4 hover:underline'
+						'border-2 border-primary bg-transparent text-primary rounded-xl hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:scale-105 active:scale-100',
+					secondary: 'bg-secondary text-secondary-foreground rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-100',
+					ghost: 'rounded-lg hover:bg-accent hover:text-accent-foreground hover:scale-105 active:scale-100',
+					link: 'text-primary underline-offset-4 hover:underline hover:scale-105 active:scale-100',
+					glass: 'bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl shadow-lg hover:bg-white/20 hover:shadow-xl hover:scale-105 active:scale-100'
 				},
 				size: {
-					default: 'h-9 px-4 py-2',
-					sm: 'h-8 rounded-md gap-1.5 px-3',
-					lg: 'h-10 rounded-md px-6',
-					icon: 'size-9'
+					default: 'h-11 px-6 py-2.5 text-sm',
+					sm: 'h-9 rounded-lg gap-1.5 px-4 text-xs',
+					lg: 'h-14 rounded-2xl px-8 text-base',
+					xl: 'h-16 rounded-2xl px-10 text-lg',
+					icon: 'size-10 rounded-xl'
 				}
 			},
 			defaultVariants: {
