@@ -4,6 +4,16 @@
 
 Client application for all tvupweb related services.
 
+## Tech Stack
+
+- **Framework**: [SvelteKit 5](https://kit.svelte.dev/) with Svelte 5 runes
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) adapted for Svelte
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) with CSS variables
+- **Language**: TypeScript
+- **State Management**: Svelte stores and runes
+- **Backend**: GraphQL API
+- **Session Storage**: Redis
+
 ## Development
 
 The app is built using [sveltekit](https://kit.svelte.dev/)
@@ -34,6 +44,22 @@ Husky is used to run linting and code formatting on commit for staged files. You
 ```bash
 npm run lint:fix
 ```
+
+## UI Components
+
+The application uses a hybrid approach for UI components:
+
+### shadcn/ui Components
+Modern, accessible components adapted from shadcn/ui for Svelte 5:
+- Located in `/src/lib/components/ui/`
+- Components: Button, Input, Label, Card, Alert
+- Uses Tailwind CSS with CSS variables for theming
+- Full TypeScript support with Svelte 5 runes
+
+### Legacy sveltewind Components
+Custom component library for existing features:
+- Located in `/src/sveltewind/`
+- Being progressively migrated to shadcn/ui
 
 ## Building the application
 
