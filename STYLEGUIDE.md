@@ -221,12 +221,27 @@ Our design system focuses on creating a modern, vibrant, and professional user e
 ## 🎭 Component Patterns
 
 ### Cards
+Cards are the primary container component with multiple variants:
+
+#### Glass Card
 ```svelte
-<div class="bg-gradient-to-br from-white/10 via-white/5 to-transparent 
-            backdrop-blur-xl border border-white/10 rounded-3xl 
-            shadow-2xl overflow-hidden">
-  <!-- Card content -->
-</div>
+<Card variant="glass" hasShimmer>
+  <!-- Semi-transparent with backdrop blur -->
+</Card>
+```
+
+#### Gradient Card  
+```svelte
+<Card variant="gradient">
+  <!-- Purple to cyan gradient background -->
+</Card>
+```
+
+#### Glow Card
+```svelte
+<Card variant="glow">
+  <!-- Border glow effect -->
+</Card>
 ```
 
 ### Input Fields
@@ -293,7 +308,59 @@ Our design system focuses on creating a modern, vibrant, and professional user e
 - Avoid too many gradient elements on one page
 - Don't use animations that are too fast (<150ms) or slow (>1s)
 
+## 📊 Dashboard Components
+
+### Tables
+Modern table design with glass morphism effects:
+```svelte
+<Table containerClassName="mb-6">
+  <TableHeader>
+    <TableRow>
+      <TableHead>Column</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow className="hover:bg-white/5">
+      <TableCell>Data</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+### Badges
+Status indicators with semantic colors:
+```svelte
+<Badge variant="success">Active</Badge>
+<Badge variant="warning">Pending</Badge>
+<Badge variant="error">Failed</Badge>
+<Badge variant="info">Info</Badge>
+<Badge variant="glow">Premium</Badge>
+```
+
+### Stat Cards
+Key metric displays with icons:
+```svelte
+<Card variant="gradient">
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="text-sm text-gray-400">Metric Label</p>
+      <p class="text-3xl font-bold text-white">123</p>
+    </div>
+    <div class="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl">
+      <!-- Icon -->
+    </div>
+  </div>
+</Card>
+```
+
 ## 🔄 Version History
+
+### v1.1.0 (November 2024)
+- Added dashboard-specific components
+- Enhanced Card component with variants
+- Created modern Table components
+- Added Badge component for status indicators
+- Defined dashboard layout patterns
 
 ### v1.0.0 (November 2024)
 - Initial style guide creation
